@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://dear7whac1f7m"]
 
+[ext_resource type="PackedScene" uid="uid://ckylxe3ctrvw3" path="res://assets/models/hand_l.gltf" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cbb3d23q87a6y" path="res://assets/models/hand_r.gltf" id="2_h2yge"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_7dm0k"]
 size = Vector3(0.1, 0.1, 0.1)
 
@@ -18,11 +21,21 @@ tracker = &"left_hand"
 [node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/LeftController" unique_id=615117667]
 mesh = SubResource("BoxMesh_7dm0k")
 
+[node name="LeftHandRoot" type="Node3D" parent="XROrigin3D/LeftController" unique_id=798154664]
+
+[node name="hand_l" parent="XROrigin3D/LeftController/LeftHandRoot" unique_id=880831955 instance=ExtResource("1_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.089113995, 0, -0.08375469)
+
 [node name="RightController" type="XRController3D" parent="XROrigin3D" unique_id=1631282615]
 tracker = &"right_hand"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/RightController" unique_id=1612179627]
 mesh = SubResource("BoxMesh_ig7tw")
+
+[node name="RightHandRoot" type="Node3D" parent="XROrigin3D/RightController" unique_id=415324616]
+
+[node name="hand_r" parent="XROrigin3D/RightController/RightHandRoot" unique_id=154555743 instance=ExtResource("2_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08466405, 0, -0.09464048)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=664910236]
 
