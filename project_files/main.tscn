@@ -9,6 +9,12 @@ size = Vector3(0.1, 0.1, 0.1)
 [sub_resource type="BoxMesh" id="BoxMesh_ig7tw"]
 size = Vector3(0.1, 0.1, 0.1)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_0xm2m"]
+size = Vector2(20, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
+size = Vector3(20, 0.1, 20)
+
 [node name="Node3D" type="Node3D" unique_id=1253089119]
 
 [node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=224928731]
@@ -35,7 +41,7 @@ mesh = SubResource("BoxMesh_ig7tw")
 [node name="RightHandRoot" type="Node3D" parent="XROrigin3D/RightController" unique_id=415324616]
 
 [node name="hand_r" parent="XROrigin3D/RightController/RightHandRoot" unique_id=154555743 instance=ExtResource("2_h2yge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08466405, 0, -0.09464048)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08, 0, -0.08)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=664910236]
 
@@ -43,3 +49,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08466405, 0, -0.09464048)
 offset_right = 8.0
 offset_bottom = 8.0
 text = "Enter VR"
+
+[node name="Level" type="Node3D" parent="." unique_id=1875827633]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level" unique_id=940099026]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15322158, 0)
+mesh = SubResource("PlaneMesh_0xm2m")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/MeshInstance3D" unique_id=1106206108]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/MeshInstance3D/StaticBody3D" unique_id=1193370232]
+shape = SubResource("BoxShape3D_h2yge")
