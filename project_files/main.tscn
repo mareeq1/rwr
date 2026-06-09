@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dear7whac1f7m"]
 
 [ext_resource type="PackedScene" uid="uid://ckylxe3ctrvw3" path="res://assets/models/hand_l.gltf" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://b8yp3ie8l32me" path="res://node_3d.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://cbb3d23q87a6y" path="res://assets/models/hand_r.gltf" id="2_h2yge"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_7dm0k"]
@@ -30,6 +31,7 @@ material = SubResource("StandardMaterial3D_h2yge")
 [sub_resource type="BoxShape3D" id="BoxShape3D_lquwl"]
 
 [node name="Node3D" type="Node3D" unique_id=1253089119]
+script = ExtResource("1_h2yge")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=224928731]
 
