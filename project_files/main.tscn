@@ -5,6 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://cbb3d23q87a6y" path="res://assets/models/hand_r.gltf" id="2_h2yge"]
 [ext_resource type="Script" uid="uid://dqpnama5ltq4a" path="res://xr_origin_3d.gd" id="2_lquwl"]
 [ext_resource type="Script" uid="uid://dp7rj2igf0rkt" path="res://teleport.gd" id="4_7mycd"]
+[ext_resource type="Texture2D" uid="uid://biailtefl4niy" path="res://assets/models/trawa.jpg" id="6_7mycd"]
+[ext_resource type="Texture2D" uid="uid://cmtk4brpnqukn" path="res://assets/models/cegla.jpg" id="7_kek77"]
+[ext_resource type="Texture2D" uid="uid://jcyv3w8xyw2s" path="res://assets/models/dach.jpg" id="8_4c57u"]
+[ext_resource type="Texture2D" uid="uid://b88gri3ukf5bu" path="res://assets/models/drzwi.jpg" id="9_efxa6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
 albedo_color = Color(0.3137255, 1, 1, 1)
@@ -14,8 +18,12 @@ top_radius = 0.2
 bottom_radius = 0.2
 height = 0.5
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dg77c"]
+albedo_texture = ExtResource("6_7mycd")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
-albedo_color = Color(0.2509804, 0.57254905, 0.16078432, 1)
+albedo_texture = ExtResource("6_7mycd")
+albedo_texture_force_srgb = true
 metallic = 0.05
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0xm2m"]
@@ -34,6 +42,30 @@ material = SubResource("StandardMaterial3D_h2yge")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lquwl"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ycdy4"]
+albedo_texture = ExtResource("7_kek77")
+
+[sub_resource type="BoxMesh" id="BoxMesh_w48qg"]
+size = Vector3(1.63, 5.73, 1.325)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vivmo"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2cqfq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yaehf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_074og"]
+albedo_texture = ExtResource("8_4c57u")
+
+[sub_resource type="PrismMesh" id="PrismMesh_cegan"]
+size = Vector3(2.65, 0.705, 1.875)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_82xsv"]
+albedo_texture = ExtResource("9_efxa6")
+
+[sub_resource type="BoxMesh" id="BoxMesh_getpj"]
+size = Vector3(0.1, 1.095, 0.425)
+
 [node name="Node3D" type="Node3D" unique_id=1253089119]
 script = ExtResource("1_h2yge")
 
@@ -48,7 +80,6 @@ tracker = &"left_hand"
 [node name="LeftHandRoot" type="Node3D" parent="XROrigin3D/LeftController" unique_id=798154664]
 
 [node name="hand_l" parent="XROrigin3D/LeftController/LeftHandRoot" unique_id=880831955 instance=ExtResource("1_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.089113995, 0, -0.08375469)
 
 [node name="RightController" type="XRController3D" parent="XROrigin3D" unique_id=1631282615]
 tracker = &"right_hand"
@@ -57,7 +88,6 @@ script = ExtResource("4_7mycd")
 [node name="RightHandRoot" type="Node3D" parent="XROrigin3D/RightController" unique_id=415324616]
 
 [node name="hand_r" parent="XROrigin3D/RightController/RightHandRoot" unique_id=154555743 instance=ExtResource("2_h2yge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08, 0, -0.08)
 
 [node name="TeleportRay" type="RayCast3D" parent="XROrigin3D/RightController" unique_id=103896174]
 target_position = Vector3(0, -1, -5)
@@ -86,11 +116,13 @@ text = "Enter VR"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Level" unique_id=940099026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15322158, 0)
+material_override = SubResource("StandardMaterial3D_dg77c")
 mesh = SubResource("PlaneMesh_0xm2m")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level/MeshInstance3D" unique_id=1106206108]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/MeshInstance3D/StaticBody3D" unique_id=1193370232]
+visible = false
 shape = SubResource("BoxShape3D_h2yge")
 
 [node name="Ob1" type="Node3D" parent="." unique_id=535406734]
@@ -119,4 +151,32 @@ shape = SubResource("BoxShape3D_lquwl")
 transform = Transform3D(0.50749147, -0.61189765, 0.60665786, -0.2526436, 0.56744677, 0.78369343, -0.82378614, -0.55098593, 0.1333824, 0, 7.0812936, 0)
 light_color = Color(1, 1, 0.36862746, 1)
 light_angular_distance = 10.03
-light_specular = 3.649
+light_specular = 1.757
+
+[node name="Node3D" type="Node3D" parent="." unique_id=40695282]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=1322247575]
+transform = Transform3D(1, 0, 0, 0, 0.36, 0, 0, 0, 1, -4.705, 0.375, 0.75)
+material_override = SubResource("StandardMaterial3D_ycdy4")
+mesh = SubResource("BoxMesh_w48qg")
+surface_material_override/0 = SubResource("StandardMaterial3D_vivmo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D" unique_id=97477441]
+physics_material_override = SubResource("PhysicsMaterial_2cqfq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/StaticBody3D" unique_id=1070669757]
+shape = SubResource("BoxShape3D_yaehf")
+
+[node name="Node3D2" type="Node3D" parent="." unique_id=839843164]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2" unique_id=923448518]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.755, 1.511, 0.751)
+material_override = SubResource("StandardMaterial3D_074og")
+mesh = SubResource("PrismMesh_cegan")
+
+[node name="Node3D3" type="Node3D" parent="." unique_id=1478212362]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D3" unique_id=955093337]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.915, 0.135, 0.735)
+material_override = SubResource("StandardMaterial3D_82xsv")
+mesh = SubResource("BoxMesh_getpj")
