@@ -11,12 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://b88gri3ukf5bu" path="res://assets/models/drzwi.jpg" id="9_efxa6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
-albedo_color = Color(0.3137255, 1, 1, 1)
+albedo_color = Color(0.5411765, 0.30588236, 0.18039216, 1)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_lquwl"]
-top_radius = 0.2
+[sub_resource type="CylinderMesh" id="CylinderMesh_kek77"]
+top_radius = 0.3
 bottom_radius = 0.2
-height = 0.5
+height = 0.05
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dg77c"]
 albedo_texture = ExtResource("6_7mycd")
@@ -29,6 +29,7 @@ metallic = 0.05
 [sub_resource type="PlaneMesh" id="PlaneMesh_0xm2m"]
 material = SubResource("StandardMaterial3D_0xm2m")
 size = Vector2(20, 20)
+center_offset = Vector3(0, -2, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
 size = Vector3(20, 0.1, 20)
@@ -58,7 +59,7 @@ size = Vector3(1.63, 5.73, 1.325)
 albedo_texture = ExtResource("8_4c57u")
 
 [sub_resource type="PrismMesh" id="PrismMesh_cegan"]
-size = Vector3(2.65, 0.705, 1.875)
+size = Vector3(2.65, 0.78, 1.875)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_82xsv"]
 albedo_texture = ExtResource("9_efxa6")
@@ -90,13 +91,15 @@ script = ExtResource("4_7mycd")
 [node name="hand_r" parent="XROrigin3D/RightController/RightHandRoot" unique_id=154555743 instance=ExtResource("2_h2yge")]
 
 [node name="TeleportRay" type="RayCast3D" parent="XROrigin3D/RightController" unique_id=103896174]
-target_position = Vector3(0, -1, -5)
+target_position = Vector3(0, -4, -10)
+collision_mask = 2
+hit_from_inside = true
 
 [node name="TeleportMarker" type="MeshInstance3D" parent="XROrigin3D/RightController" unique_id=698753533]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.095, -5)
-visible = false
 material_override = SubResource("StandardMaterial3D_1bvp3")
-mesh = SubResource("CylinderMesh_lquwl")
+transparency = 0.2
+mesh = SubResource("CylinderMesh_kek77")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=664910236]
 
@@ -120,15 +123,15 @@ material_override = SubResource("StandardMaterial3D_dg77c")
 mesh = SubResource("PlaneMesh_0xm2m")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level/MeshInstance3D" unique_id=1106206108]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/MeshInstance3D/StaticBody3D" unique_id=1193370232]
-visible = false
 shape = SubResource("BoxShape3D_h2yge")
 
 [node name="Ob1" type="Node3D" parent="." unique_id=535406734]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ob1" unique_id=255834709]
-transform = Transform3D(1.56, 0, 0, 0, 3.315, 0, 0, 0, 1.315, 0.854, 1.495, -2.476)
+transform = Transform3D(1.56, 0, 0, 0, 3.315, 0, 0, 0, 1.315, 1.384, -0.495, -2.476)
 mesh = SubResource("BoxMesh_1bvp3")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ob1/MeshInstance3D" unique_id=190693115]
@@ -139,7 +142,7 @@ shape = SubResource("BoxShape3D_lquwl")
 [node name="Ob2" type="Node3D" parent="." unique_id=1683291251]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ob2" unique_id=1959540046]
-transform = Transform3D(1.56, 0, 0, 0, 3.315, 0, 0, 0, 1.315, -1.715, 1.49, -2.766)
+transform = Transform3D(1.56, 0, 0, 0, 3.315, 0, 0, 0, 1.315, -1.715, -0.49, -2.766)
 mesh = SubResource("BoxMesh_1bvp3")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ob2/MeshInstance3D" unique_id=1690421689]
@@ -149,14 +152,14 @@ shape = SubResource("BoxShape3D_lquwl")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=297296146]
 transform = Transform3D(0.50749147, -0.61189765, 0.60665786, -0.2526436, 0.56744677, 0.78369343, -0.82378614, -0.55098593, 0.1333824, 0, 7.0812936, 0)
-light_color = Color(1, 1, 0.36862746, 1)
+light_color = Color(1, 1, 0.6901961, 1)
 light_angular_distance = 10.03
 light_specular = 1.757
 
 [node name="Node3D" type="Node3D" parent="." unique_id=40695282]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=1322247575]
-transform = Transform3D(1, 0, 0, 0, 0.36, 0, 0, 0, 1, -4.705, 0.375, 0.75)
+transform = Transform3D(1, 0, 0, 0, 0.36, 0, 0, 0, 1, -4.705, -1.165, 0.75)
 material_override = SubResource("StandardMaterial3D_ycdy4")
 mesh = SubResource("BoxMesh_w48qg")
 surface_material_override/0 = SubResource("StandardMaterial3D_vivmo")
@@ -170,13 +173,13 @@ shape = SubResource("BoxShape3D_yaehf")
 [node name="Node3D2" type="Node3D" parent="." unique_id=839843164]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2" unique_id=923448518]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.755, 1.511, 0.751)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.755, 0.036, 0.751)
 material_override = SubResource("StandardMaterial3D_074og")
 mesh = SubResource("PrismMesh_cegan")
 
 [node name="Node3D3" type="Node3D" parent="." unique_id=1478212362]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D3" unique_id=955093337]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.915, 0.135, 0.735)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.915, -1.675, 0.735)
 material_override = SubResource("StandardMaterial3D_82xsv")
 mesh = SubResource("BoxMesh_getpj")
