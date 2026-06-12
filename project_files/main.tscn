@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cmtk4brpnqukn" path="res://assets/models/cegla.jpg" id="7_kek77"]
 [ext_resource type="Texture2D" uid="uid://jcyv3w8xyw2s" path="res://assets/models/dach.jpg" id="8_4c57u"]
 [ext_resource type="Texture2D" uid="uid://b88gri3ukf5bu" path="res://assets/models/drzwi.jpg" id="9_efxa6"]
+[ext_resource type="Texture2D" uid="uid://gmj8njv4ub8f" path="res://assets/materials/marble.jpg" id="10_efxa6"]
+[ext_resource type="Texture2D" uid="uid://d2bydh6sueylw" path="res://assets/materials/marble2.jpg" id="11_dg77c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
 albedo_color = Color(0.5411765, 0.30588236, 0.18039216, 1)
@@ -40,10 +42,11 @@ metallic = 0.4
 
 [sub_resource type="BoxMesh" id="BoxMesh_1bvp3"]
 material = SubResource("StandardMaterial3D_h2yge")
+size = Vector3(1, 3, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lquwl"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ycdy4"]
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_ycdy4"]
 albedo_texture = ExtResource("7_kek77")
 
 [sub_resource type="BoxMesh" id="BoxMesh_w48qg"]
@@ -65,7 +68,29 @@ size = Vector3(2.65, 0.78, 1.875)
 albedo_texture = ExtResource("9_efxa6")
 
 [sub_resource type="BoxMesh" id="BoxMesh_getpj"]
-size = Vector3(0.1, 1.095, 0.425)
+size = Vector3(0.1, 1.76, 0.425)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w48qg"]
+albedo_texture = ExtResource("10_efxa6")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vivmo"]
+top_radius = 0.7
+bottom_radius = 0.7
+height = 7.005
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_2cqfq"]
+albedo_texture = ExtResource("10_efxa6")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yaehf"]
+top_radius = 1.3
+bottom_radius = 0.8
+height = 0.9
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cegan"]
+albedo_texture = ExtResource("11_dg77c")
+
+[sub_resource type="PrismMesh" id="PrismMesh_82xsv"]
+size = Vector3(6.235, 2.345, 4.17)
 
 [node name="Node3D" type="Node3D" unique_id=1253089119]
 script = ExtResource("1_h2yge")
@@ -134,11 +159,6 @@ shape = SubResource("BoxShape3D_h2yge")
 transform = Transform3D(1.56, 0, 0, 0, 3.315, 0, 0, 0, 1.315, 1.384, -0.495, -2.476)
 mesh = SubResource("BoxMesh_1bvp3")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Ob1/MeshInstance3D" unique_id=190693115]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ob1/MeshInstance3D/StaticBody3D" unique_id=205071154]
-shape = SubResource("BoxShape3D_lquwl")
-
 [node name="Ob2" type="Node3D" parent="." unique_id=1683291251]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ob2" unique_id=1959540046]
@@ -156,30 +176,57 @@ light_color = Color(1, 1, 0.6901961, 1)
 light_angular_distance = 10.03
 light_specular = 1.757
 
-[node name="Node3D" type="Node3D" parent="." unique_id=40695282]
+[node name="dom" type="Node3D" parent="." unique_id=40695282]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=1322247575]
-transform = Transform3D(1, 0, 0, 0, 0.36, 0, 0, 0, 1, -4.705, -1.165, 0.75)
-material_override = SubResource("StandardMaterial3D_ycdy4")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="dom" unique_id=1322247575]
+transform = Transform3D(2.535, 0, 0, 0, 1.16, 0, 0, 0, 2.5, -4.705, 1.07, 0.75)
+material_override = SubResource("ORMMaterial3D_ycdy4")
 mesh = SubResource("BoxMesh_w48qg")
 surface_material_override/0 = SubResource("StandardMaterial3D_vivmo")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D" unique_id=97477441]
+[node name="StaticBody3D" type="StaticBody3D" parent="dom/MeshInstance3D" unique_id=97477441]
 physics_material_override = SubResource("PhysicsMaterial_2cqfq")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/StaticBody3D" unique_id=1070669757]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dom/MeshInstance3D/StaticBody3D" unique_id=1070669757]
 shape = SubResource("BoxShape3D_yaehf")
 
 [node name="Node3D2" type="Node3D" parent="." unique_id=839843164]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2" unique_id=923448518]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.755, 0.036, 0.751)
+transform = Transform3D(2.53, 0, 0, 0, 2.475, 0, 0, 0, 2.47, -4.755, 4.921, 0.751)
 material_override = SubResource("StandardMaterial3D_074og")
 mesh = SubResource("PrismMesh_cegan")
 
 [node name="Node3D3" type="Node3D" parent="." unique_id=1478212362]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D3" unique_id=955093337]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.915, -1.675, 0.735)
+transform = Transform3D(-2.725, 0, -4.1146356e-07, 0, 2.725, 0, 4.1146356e-07, 0, -2.725, -2.64, -0.025, 0.735)
 material_override = SubResource("StandardMaterial3D_82xsv")
 mesh = SubResource("BoxMesh_getpj")
+
+[node name="brama" type="Node3D" parent="." unique_id=2097472709]
+
+[node name="pillar1" type="MeshInstance3D" parent="brama" unique_id=424643969]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.655, 1.09, 4.56)
+material_override = SubResource("StandardMaterial3D_w48qg")
+mesh = SubResource("CylinderMesh_vivmo")
+
+[node name="pillar2" type="MeshInstance3D" parent="brama" unique_id=1645330294]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.56, 1.09, 6.785)
+material_override = SubResource("StandardMaterial3D_w48qg")
+mesh = SubResource("CylinderMesh_vivmo")
+
+[node name="pillarUP2" type="MeshInstance3D" parent="brama" unique_id=1592388194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.56, 4.79, 6.785)
+material_override = SubResource("ORMMaterial3D_2cqfq")
+mesh = SubResource("CylinderMesh_yaehf")
+
+[node name="pillarUP1" type="MeshInstance3D" parent="brama" unique_id=1149207816]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.655, 4.79, 4.56)
+material_override = SubResource("ORMMaterial3D_2cqfq")
+mesh = SubResource("CylinderMesh_yaehf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="brama" unique_id=807316320]
+transform = Transform3D(0.76604444, 0, 0.6427876, 0, 1, 0, -0.6427876, 0, 0.76604444, 5.235, 6.385, 5.435)
+material_override = SubResource("StandardMaterial3D_cegan")
+mesh = SubResource("PrismMesh_82xsv")
